@@ -2,7 +2,7 @@ import colorArray from './colorArray';
 
 const adjectiveListener = (string, keyWord) =>{
 	let adjectives = [];
-	
+
 	switch (keyWord){
 		case 'background':
 			adjectives = colorArray;

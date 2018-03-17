@@ -3,110 +3,47 @@ import React from 'react';
 const TextDisplay = ({ textColor, fieldString, keyWord, adjective, modifyer })=>{
 
 	const callOutText = (text)=>{
-	 	
-
-	 	if (fieldString.includes(modifyer) && fieldString.includes(adjective) && fieldString.includes(keyWord)){
-			let arrKW = fieldString.split(keyWord);
-			let arrA = arrKW.map((element, i) => [element,i]);
-			arrA = arrA.filter(element=> element[0].includes(adjective));
-			let arrASplit = arrA[0][0].split(adjective);
-			let completeArr=[];
-			if (arrA[0][1] === 1){
-				completeArr = arrKW.concat(arrASplit);
-				completeArr.splice(1,1);
-				return(		
-					<span>
-						{completeArr[0]}
-						<span style={{fontSize:'1.7em'}}>{keyWord}</span>
-						{completeArr[1]}
-						<span style={{fontSize:'1.6em'}}>{adjective}</span>
-						{completeArr[2]}
-					</span>
-				)		 		
+		// let importantWordCount = (fieldString.match(keyWord) || []).length
+		// 	+ (fieldString.match(adjective) || []).length
+		// 	+ (fieldString.match(modifyer) || []).length;
+		let arr = fieldString.split(" ")
+		let valueArr = arr.map((word, i)  => {
+			if (word.toLowerCase() === keyWord){
+				return [word, 'key', i];
+			} else if (word.toLowerCase() === adjective){
+				return [word, 'adj', i];
+			} else if (word.toLowerCase() === modifyer){
+				return [word, 'mod', i];
 			} else {
-				completeArr = arrASplit.concat(arrKW);
-				completeArr.splice(2,1);
-				return(		
-					<span>
-						{completeArr[0]}
-						<span style={{fontSize:'1.6em'}}>{adjective}</span>
-						{completeArr[1]}
-						<span style={{fontSize:'1.7em'}}>{keyWord}</span>
-						{completeArr[2]}
-					</span>
-				)	
+				return [word, 'normal', i]
 			}
+		})
 
 
-
-
-	 	}else if (fieldString.includes(adjective) && fieldString.includes(keyWord)){
-			let arrKW = fieldString.split(keyWord);
-			let arrA = arrKW.map((element, i) => [element,i]);
-			arrA = arrA.filter(element=> element[0].includes(adjective));
-			let arrASplit = arrA[0][0].split(adjective);
-			let completeArr=[];
-			if (arrA[0][1] === 1){
-				completeArr = arrKW.concat(arrASplit);
-				completeArr.splice(1,1);
-				return(		
-					<span>
-						{completeArr[0]}
-						<span style={{fontSize:'1.7em'}}>{keyWord}</span>
-						{completeArr[1]}
-						<span style={{fontSize:'1.6em'}}>{adjective}</span>
-						{completeArr[2]}
-					</span>
-				)	
+		let finalArr = valueArr.map(word =>{
+			if (word[1]==='key') {
+				return <span style={{fontSize:'40px'}}>{word[0]} </span>
+			} else if (word[1] === 'adj'){
+				return <span style={{fontSize:'35px'}}>{word[0]} </span>
+			} else if (word[1] === 'mod'){
+				return <span style={{fontSize:'30px'}}>{word[0]} </span>
 			} else {
-				completeArr = arrASplit.concat(arrKW);
-				completeArr.splice(2,1);
-				return(		
-					<span>
-						{completeArr[0]}
-						<span style={{fontSize:'1.6em'}}>{adjective}</span>
-						{completeArr[1]}
-						<span style={{fontSize:'1.7em'}}>{keyWord}</span>
-						{completeArr[2]}
-					</span>
-				)	
+				return word[0]+' ';
 			}
-
-		} else if(fieldString.includes(keyWord)){
-			let arr = fieldString.split(keyWord);
-			return(		
-				<span>
-					{arr[0]}
-					<span style={{fontSize:'1.7em'}}>{keyWord}</span>
-					{arr[1]}
-				</span>
-			)
-		} else if (fieldString.includes(adjective)){
-			let arr = fieldString.split(adjective) 
-			return(		
-				<span>
-					{arr[0]}
-					<span style={{fontSize:'1.6em'}}>{adjective}</span>
-					{arr[1]}
-				</span>
-			)
-
-	
-
-		} else if (fieldString === ''){
-			return (
-				<span>Type Something</span>
-			)
-		} else {
-			return <span>{fieldString}</span>
-		}
+		})
 
 
+
+		return (
+			finalArr
+		)
+
+		
 	}
 
 	return (
 		<div>
-			<div style={{color:textColor, margin:'10px', fontSize:'1.5em'}}> {callOutText()} </div>
+			<div style={{color:textColor, margin:'10px', fontSize:'1.4em'}}> {callOutText()} </div>
       </div>
 	);
 

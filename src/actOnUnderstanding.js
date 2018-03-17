@@ -26,6 +26,7 @@ const actOnunderstanding = (keyWord, adjective, isComplex, modifyer) =>{
 		};
 		action.keyWord = 'waiting';
 		action.adjective = 'waiting';
+		action.modifyer = 'waiting';
 		return action;
 	}
 };
