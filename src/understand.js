@@ -28,7 +28,10 @@ const understand = (string, word) =>{
       
 
       if (colorArray.includes(complexColor)){
-        return { adjective:complexColor }
+        return { 
+          adjective:adjective,
+          modifyer:modifyer
+        }
       } else {
         return { adjective:adjective }
       }

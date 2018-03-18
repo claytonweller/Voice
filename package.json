@@ -4,10 +4,12 @@
   "private": true,
   "homepage": "https://claytonweller.github.io/Voice",
   "dependencies": {
+    "curl": "^0.1.4",
     "react": "^16.2.0",
     "react-dom": "^16.2.0",
     "react-helmet": "^5.2.0",
-    "react-scripts": "1.1.1"
+    "react-scripts": "1.1.1",
+    "watson-speech": "^0.34.1"
   },
   "scripts": {
     "predeploy": "npm run build",
