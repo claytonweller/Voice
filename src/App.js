@@ -1,11 +1,21 @@
 import React, { Component } from 'react';
-import {Helmet} from 'react-helmet';
+// import {Helmet} from 'react-helmet';
 import recognizeMicrophone from 'watson-speech/speech-to-text/recognize-microphone';
+
+///Elements built into the structure of the app.
+
 import './App.css';
 import TextCapture from './TextCapture';
-import TextDisplay from './TextDisplay';
+import Display from './Display'
+import Nav from './Nav'
+import Footer from './Footer'
+
+///Functions for understanding text. They look for Keywords, adjectives, and modifyers. Then they return states based upon those fidings
+
 import understand from './understand';
 import actOnUnderstanding from './actOnUnderstanding';
+
+//The App BEGINS!
 
 class App extends Component {
     constructor (){
@@ -18,7 +28,7 @@ class App extends Component {
         adjective: 'waiting',
         isComplex: false,
         BGColor:'',
-        textColor:'',
+        textColor:'white',
       }
     }
 
@@ -59,8 +69,6 @@ class App extends Component {
           format: false // optional - performs basic formatting on the results such as capitals an periods
       });
       stream.on('data', (data) => {
-        // let words = understand(data.alternatives[0].transcript, this.state.keyWord)
-        // this.setState(words);
         this.activate();
         this.setState({fieldString:data.alternatives[0].transcript});
         
@@ -77,15 +85,18 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        <Helmet bodyAttributes = {{ style: `background:${this.state.BGColor}`}}/>
-        <TextDisplay
+        <Nav />
+        <Display 
           textColor={this.state.textColor}
           fieldString={this.state.fieldString}
           keyWord={this.state.keyWord}
           adjective={this.state.adjective}
           modifyer={this.state.modifyer}
+          BGColor={this.state.BGColor}
 
-         />
+        />
+        <h1> GET READY TO HAVE YOUR MIND BLOWN! </h1>
+
         <TextCapture
           submitClick={this.activate}
           submitFieldChange={this.onSubmitFieldChange}
@@ -97,6 +108,7 @@ class App extends Component {
         <h2> {'BGColor - '+ this.state.BGColor} </h2>
         <h2> {'TextColor - '+ this.state.textColor} </h2>
         <button onClick={this.onListenClick}>Listen to mic</button>
+        <Footer />
       </div>
     );
   }

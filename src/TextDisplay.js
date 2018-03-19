@@ -22,20 +22,28 @@ const TextDisplay = ({ textColor, fieldString, keyWord, adjective, modifyer })=>
 
 		let finalArr = valueArr.map(word =>{
 			if (word[1]==='key') {
-				return <span style={{fontSize:'40px'}}>{word[0]} </span>
+				return <span style={{fontSize:'40px'}} key={word[2]}>{word[0]} </span>
 			} else if (word[1] === 'adj'){
-				return <span style={{fontSize:'35px'}}>{word[0]} </span>
+				return <span style={{fontSize:'35px'}} key={word[2]}>{word[0]} </span>
 			} else if (word[1] === 'mod'){
-				return <span style={{fontSize:'30px'}}>{word[0]} </span>
+				return <span style={{fontSize:'30px'}} key={word[2]}>{word[0]} </span>
 			} else {
 				return word[0]+' ';
 			}
 		})
 
+		let display = ()=>{
+			if(finalArr[0] === ' ' && finalArr.length < 2 ){
+				return 'Type/Say Something';
+			} else{
+				return finalArr;
+			}
+		};
+
 
 
 		return (
-			finalArr
+			display()
 		)
 
 		
@@ -43,7 +51,7 @@ const TextDisplay = ({ textColor, fieldString, keyWord, adjective, modifyer })=>
 
 	return (
 		<div>
-			<div style={{color:textColor, margin:'10px', fontSize:'1.4em'}}> {callOutText()} </div>
+			<h2 className="text-center" style={{color:textColor, fontSize:'1.6em'}}> {callOutText()} </h2>
       </div>
 	);
 
