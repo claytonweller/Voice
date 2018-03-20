@@ -5,7 +5,6 @@ import recognizeMicrophone from 'watson-speech/speech-to-text/recognize-micropho
 ///Elements built into the structure of the app.
 
 import './App.css';
-import TextCapture from './TextCapture';
 import Display from './Display'
 import Nav from './Nav'
 import Footer from './Footer'
@@ -29,6 +28,7 @@ class App extends Component {
         isComplex: false,
         BGColor:'',
         textColor:'white',
+        mode:'choose',
       }
     }
 
@@ -82,25 +82,34 @@ class App extends Component {
     });
   }
 
+  onVoiceButtonClick = () =>{
+    this.setState({mode:'voice'})
+  }
+
+  onTextButtonClick = ()=>{
+    this.setState({mode:'text'})
+  }
+
+
   render() {
     return (
       <div className="App">
         <Nav />
         <Display 
+          mode = {this.state.mode}
           textColor={this.state.textColor}
           fieldString={this.state.fieldString}
           keyWord={this.state.keyWord}
           adjective={this.state.adjective}
           modifyer={this.state.modifyer}
           BGColor={this.state.BGColor}
-
+          activate={this.activate}
+          submitFieldChange={this.onSubmitFieldChange}
+          voiceButtonClick={this.onVoiceButtonClick}
+          textButtonClick={this.onTextButtonClick}
         />
         <h1> GET READY TO HAVE YOUR MIND BLOWN! </h1>
 
-        <TextCapture
-          submitClick={this.activate}
-          submitFieldChange={this.onSubmitFieldChange}
-        />
         <h2> {'KeyWord - '+ this.state.keyWord} </h2>
         <h2> {'Modifyer - '+ this.state.modifyer} </h2>
         <h2> {'adjective - '+ this.state.adjective} </h2>

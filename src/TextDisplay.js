@@ -1,6 +1,6 @@
 import React from 'react';
 
-const TextDisplay = ({ textColor, fieldString, keyWord, adjective, modifyer })=>{
+const TextDisplay = ({ mode, textColor, fieldString, keyWord, adjective, modifyer })=>{
 
 	const callOutText = (text)=>{
 		// let importantWordCount = (fieldString.match(keyWord) || []).length
@@ -34,7 +34,11 @@ const TextDisplay = ({ textColor, fieldString, keyWord, adjective, modifyer })=>
 
 		let display = ()=>{
 			if(finalArr[0] === ' ' && finalArr.length < 2 ){
-				return 'Type/Say Something';
+				if (mode === 'text'){
+					return 'Type Something';
+				} else if (mode === 'voice'){
+					return 'Say Something';
+				}
 			} else{
 				return finalArr;
 			}
@@ -51,7 +55,7 @@ const TextDisplay = ({ textColor, fieldString, keyWord, adjective, modifyer })=>
 
 	return (
 		<div>
-			<h2 className="text-center" style={{color:textColor, fontSize:'1.6em'}}> {callOutText()} </h2>
+			<h2 className="text-center" style={{color:textColor, fontSize:'1.6em', margin:'40px'}}> {callOutText()} </h2>
       </div>
 	);
 

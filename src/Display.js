@@ -1,17 +1,86 @@
 import React from 'react';
 import TextDisplay from './TextDisplay';
+import TextCapture from './TextCapture';
+import './Display.css'
 
-const Header = ({BGColor, textColor, fieldString, keyWord, adjective, modifyer})=>{
+const Header = ({textButtonClick, voiceButtonClick, activate, submitFieldChange, mode, BGColor, textColor, fieldString, keyWord, adjective, modifyer})=>{
 
+
+  const modeSelect= {
+    readOut: ()=>{
+        if (mode === "voice"){
+            return (
+                <TextDisplay
+                  textColor={textColor}
+                  fieldString={fieldString}
+                  keyWord={keyWord}
+                  adjective={adjective}
+                  modifyer={modifyer}
+                  mode={mode}
+                />
+            )
+        } else if (mode === 'text') {
+            return(
+              <div>
+                <TextDisplay
+                  textColor={textColor}
+                  fieldString={fieldString}
+                  keyWord={keyWord}
+                  adjective={adjective}
+                  modifyer={modifyer}
+                  mode={mode}
+                />
+              </div>
+            )
+        };
+    },
+    modeButtons : ()=>{
+        if (mode==="choose"){
+            return (
+              <div style={{zIndex:'10'}}>
+                <button onClick={voiceButtonClick} style={{marginTop:'50px', zIndex:'400', marginRight:'10px'}}>Voice</button>
+                <button onClick={textButtonClick}> Text </button>                
+              </div>
+            )
+        } else if (mode==="text"){
+            return(
+                <TextCapture
+                  style={{marginTop:'50px', zIndex:'400', marginRight:'10px'}}
+                  submitClick={activate}
+                  submitFieldChange={submitFieldChange}
+                />
+            )
+        }
+    },
+    title : ()=>{
+
+        return(
+            mode.toUpperCase()
+        )
+
+    }        
+    
+
+  }
 
 
     return (
         <div className="page-header section-dark" style={{background:`${BGColor}`}}>
             <div className="filter"></div>
+            <div className="moving-clouds" style={{backgroundImage:`url(${'https://cdn.rawgit.com/creativetimofficial/paper-kit/bootstrap4-development/assets/img/clouds.png'})` }}>
+            </div> 
             <div className="content-center">
                 <div className="container">
                     <div className="title-brand">
-                        <h1 className="presentation-title">VOICE</h1>
+                        <h1 className="new-title" 
+                          style={{
+                            color:`${textColor}`,
+                            // background: 'linear-gradient(to bottom, #FFFFFF 35%, #4e6773 100%)'
+                            
+                          }}
+                        >
+                            {modeSelect.title()}
+                        </h1>
                         <div className="fog-low">
                             <img src="https://cdn.rawgit.com/creativetimofficial/paper-kit/bootstrap4-development/assets/img/fog-low.png" alt="" />
                         </div>
@@ -19,21 +88,13 @@ const Header = ({BGColor, textColor, fieldString, keyWord, adjective, modifyer})
                             <img src="https://cdn.rawgit.com/creativetimofficial/paper-kit/bootstrap4-development/assets/img/fog-low.png" alt="" />
                         </div>
                     </div>
-
-                    <TextDisplay
-                      textColor={textColor}
-                      fieldString={fieldString}
-                      keyWord={keyWord}
-                      adjective={adjective}
-                      modifyer={modifyer}
-                    />
-
-
-
+                    {modeSelect.readOut()}
+                    {modeSelect.modeButtons()}
+                    
                 </div>
             </div>
-            <div className="moving-clouds" style={{backgroundImage:`url(${'https://cdn.rawgit.com/creativetimofficial/paper-kit/bootstrap4-development/assets/img/clouds.png'})` }}>
-            </div>
+
+            
         </div>
     );
 
