@@ -3,7 +3,7 @@ import TextDisplay from './TextDisplay';
 import TextCapture from './TextCapture';
 import './Display.css'
 
-const Header = ({textButtonClick, voiceButtonClick, activate, submitFieldChange, mode, BGColor, textColor, fieldString, keyWord, adjective, modifyer})=>{
+const Header = ({textButtonClick, voiceButtonClick, activate, submitClick, submitFieldChange, mode, BGColor, textColor, fieldString, keyWord, adjective, modifyer})=>{
 
 
   const modeSelect= {
@@ -37,19 +37,25 @@ const Header = ({textButtonClick, voiceButtonClick, activate, submitFieldChange,
     modeButtons : ()=>{
         if (mode==="choose"){
             return (
-              <div style={{zIndex:'10'}}>
+              <div style={{zIndex:'10'}} className="mode-buttons">
                 <button onClick={voiceButtonClick} style={{marginTop:'50px', zIndex:'400', marginRight:'10px'}}>Voice</button>
                 <button onClick={textButtonClick}> Text </button>                
               </div>
             )
         } else if (mode==="text"){
             return(
-                <TextCapture
-                  style={{marginTop:'50px', zIndex:'400', marginRight:'10px'}}
-                  submitClick={activate}
-                  submitFieldChange={submitFieldChange}
+                <TextCapture 
+                  style={{ marginBottom:'50px', zIndex:'400'}}
+                  submitClick={submitClick}
+                  submitFieldChange={submitFieldChange} 
                 />
             )
+        } else if (mode==="voice"){
+            return(
+              <div style={{zIndex:'10'}} className="mode-buttons">
+                <button onClick={textButtonClick} style={{marginTop:'50px', zIndex:'400', marginRight:'10px'}}>Text</button>            
+              </div>
+            ) 
         }
     },
     title : ()=>{
@@ -63,7 +69,6 @@ const Header = ({textButtonClick, voiceButtonClick, activate, submitFieldChange,
 
   }
 
-
     return (
         <div className="page-header section-dark" style={{background:`${BGColor}`}}>
             <div className="filter"></div>
@@ -73,23 +78,26 @@ const Header = ({textButtonClick, voiceButtonClick, activate, submitFieldChange,
                 <div className="container">
                     <div className="title-brand">
                         <h1 className="new-title" 
-                          style={{
-                            color:`${textColor}`,
-                            // background: 'linear-gradient(to bottom, #FFFFFF 35%, #4e6773 100%)'
-                            
-                          }}
+                          style={{zIndex:'4' }}
                         >
                             {modeSelect.title()}
                         </h1>
-                        <div className="fog-low">
+                        <h1 className="under-title" 
+                          style={{zIndex:'4', color:textColor }}
+                        >
+                            {modeSelect.title()}
+                        </h1>
+
+                        <div className="fog-low" style={{transitionDuration: '1s'}}>
                             <img src="https://cdn.rawgit.com/creativetimofficial/paper-kit/bootstrap4-development/assets/img/fog-low.png" alt="" />
                         </div>
-                        <div className="fog-low right">
+                        <div className="fog-low right" style={{transitionDuration: '1s'}}>
                             <img src="https://cdn.rawgit.com/creativetimofficial/paper-kit/bootstrap4-development/assets/img/fog-low.png" alt="" />
                         </div>
                     </div>
                     {modeSelect.readOut()}
                     {modeSelect.modeButtons()}
+                    <div style={{marginBottom:'50px'}}></div>
                     
                 </div>
             </div>

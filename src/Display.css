@@ -7,7 +7,52 @@
   background: -moz-linear-gradient(top, #FFFFFF 35%, #4e6773 100%);
   background: -webkit-linear-gradient(top, #FFFFFF 35%, #4e6773 100%);
   background: -ms-linear-gradient(top, #FFFFFF 35%, #4e6773 100%);
-  background: linear-gradient(to bottom, lightblue 35%, #4e6773 100%);
+  background: linear-gradient(to bottom, #FFFFFF 35%, #4e6773 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
+  opacity: .5;
+  z-index: 10;
+  position: relative;
+  top: 135px;
+  /*font-size:60%;*/
+}
+
+.under-title {
+  font-size: 8em;
+  font-weight: 700;
+  margin: 0;
+  opacity: .9;
+  
+  /*font-size: 60%;*/
+  /*top:-100px;*/
+ 
+}
+
+h1 small{
+  font-size: 100%;
+}
+
+title-brand{
+  position: absolute;
+  height: 10px;
+}
+
+button{
+  font-size: 2em;
+  font-weight: 700;
+  color: grey;
+  border-radius: 7px;
+  box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, .2);
+  margin: 10px;
+  opacity: .8
+}
+
+#submitField{
+  height: 40px;
+  opacity: .8;
+
+}
+
+.mode-buttons {
+  margin-bottom: 50px
 }

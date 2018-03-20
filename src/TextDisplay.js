@@ -55,7 +55,7 @@ const TextDisplay = ({ mode, textColor, fieldString, keyWord, adjective, modifye
 
 	return (
 		<div>
-			<h2 className="text-center" style={{color:textColor, fontSize:'1.6em', margin:'40px'}}> {callOutText()} </h2>
+			<h2 className="text-center" style={{color:textColor, fontSize:'1.6em', marginTop:'50px'}}> {callOutText()} </h2>
       </div>
 	);
 

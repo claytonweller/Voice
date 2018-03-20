@@ -41,7 +41,6 @@ class App extends Component {
     this.setState(words);
     this.setState(action);
     this.setState({ submittedString:value })
-    this.clearSubmitField();
   }
 
 
@@ -83,11 +82,17 @@ class App extends Component {
   }
 
   onVoiceButtonClick = () =>{
-    this.setState({mode:'voice'})
+    this.setState({mode:'voice'});
+    this.onListenClick();
   }
 
   onTextButtonClick = ()=>{
     this.setState({mode:'text'})
+  }
+
+  submitClick = ()=>{
+    this.activate();
+    this.clearSubmitField();
   }
 
 
@@ -105,6 +110,7 @@ class App extends Component {
           BGColor={this.state.BGColor}
           activate={this.activate}
           submitFieldChange={this.onSubmitFieldChange}
+          submitClick={this.submitClick}
           voiceButtonClick={this.onVoiceButtonClick}
           textButtonClick={this.onTextButtonClick}
         />
