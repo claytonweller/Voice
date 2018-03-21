@@ -13,7 +13,7 @@
   opacity: .5;
   z-index: 10;
   position: relative;
-  top: 135px;
+  top: 145px;
   /*font-size:60%;*/
 }
 
@@ -26,10 +26,6 @@
   /*font-size: 60%;*/
   /*top:-100px;*/
  
-}
-
-h1 small{
-  font-size: 100%;
 }
 
 title-brand{

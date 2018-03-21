@@ -5,7 +5,7 @@ import './Display.css'
 import ParticlesMine from './ParticlesMine';
 
 
-const Header = ({particleColor, textButtonClick, voiceButtonClick, activate, submitClick, submitFieldChange, mode, BGColor, textColor, fieldString, keyWord, adjective, modifyer})=>{
+const Header = ({particleColor, textButtonClick, voiceButtonClick, activate, submitClick, submitFieldChange, mode, BGColor, textColor, textSize, fieldString, keyWord, adjective, modifyer})=>{
 
 
   const modeSelect= {
@@ -14,6 +14,7 @@ const Header = ({particleColor, textButtonClick, voiceButtonClick, activate, sub
             return (
                 <TextDisplay
                   textColor={textColor}
+                  textSize={textSize}
                   fieldString={fieldString}
                   keyWord={keyWord}
                   adjective={adjective}

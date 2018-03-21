@@ -5,8 +5,8 @@ const keyWordListener = (string) =>{
 		'button',
 
 	]
-	let LowerString = string.toLowerCase();
- 	let result = keyWords.filter(kWord => LowerString.includes(kWord))
+	let lowerString = string.toLowerCase();
+ 	let result = keyWords.filter(kWord => lowerString.includes(kWord))
  	if(result.length>0){
 	 	return result[0];
 	} else {

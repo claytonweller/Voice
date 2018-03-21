@@ -1,6 +1,6 @@
 import React from 'react';
 
-const TextDisplay = ({ mode, textColor, fieldString, keyWord, adjective, modifyer })=>{
+const TextDisplay = ({ mode, textSize, textColor, fieldString, keyWord, adjective, modifyer })=>{
 
 	const callOutText = (text)=>{
 		// let importantWordCount = (fieldString.match(keyWord) || []).length

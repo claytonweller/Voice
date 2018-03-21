@@ -1,7 +1,7 @@
 
 
 
-const actOnunderstanding = (keyWord, adjective, isComplex, modifyer) =>{
+const actOnunderstanding = (keyWord, adjective, adjType, isComplex, modifyer) =>{
 	let action = {}
 
 	if(keyWord !== 'waiting' && adjective !== 'waiting'){
@@ -14,11 +14,16 @@ const actOnunderstanding = (keyWord, adjective, isComplex, modifyer) =>{
 				}
 				break;
 			case 'text':
-				if(isComplex){
-					action = {textColor:modifyer+adjective};
-				} else {
-					action = {textColor:adjective};
+				if(adjType === 'color'){				
+					if(isComplex){
+						action = {textColor:modifyer+adjective};
+					} else {
+						action = {textColor:adjective};
+					}
+				} else if (adjType === 'size'){
+					action = {textSize:adjective}
 				}
+				
 				break;
 			default:
 				console.log('nothing going on')

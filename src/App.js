@@ -25,9 +25,11 @@ class App extends Component {
         keyWord:'waiting',
         modifyer:'waiting',
         adjective: 'waiting',
+        adjType: 'waiting',
         isComplex: false,
         BGColor:'',
         textColor:'white',
+        textSize:'normal',
         particleColor:'white',
         mode:'choose',
       }
@@ -35,10 +37,10 @@ class App extends Component {
 
 
   activate=()=>{
-    const {keyWord, fieldString, adjective, isComplex, modifyer} = this.state
+    const {keyWord, fieldString, adjective, adjType, isComplex, modifyer} = this.state
     let value = fieldString;
     let words = understand(fieldString, keyWord)
-    let action = actOnUnderstanding(keyWord, adjective, isComplex, modifyer);
+    let action = actOnUnderstanding(keyWord, adjective, adjType, isComplex, modifyer);
     this.setState(words);
     this.setState(action);
     this.setState({ submittedString:value })
@@ -103,6 +105,7 @@ class App extends Component {
         <Nav />
         <Display 
           mode = {this.state.mode}
+          textSize = {this.state.textSize}
           textColor={this.state.textColor}
           fieldString={this.state.fieldString}
           keyWord={this.state.keyWord}
@@ -122,10 +125,12 @@ class App extends Component {
         <h2> {'KeyWord - '+ this.state.keyWord} </h2>
         <h2> {'Modifyer - '+ this.state.modifyer} </h2>
         <h2> {'adjective - '+ this.state.adjective} </h2>
+        <h2> {'adjType - '+ this.state.adjType} </h2>        
         <h2> {'Complex? - '+ this.state.isComplex} </h2>
         <h2> {'BGColor - '+ this.state.BGColor} </h2>
         <h2> {'particleColor - '+ this.state.particleColor} </h2>
         <h2> {'textColor - '+ this.state.textColor} </h2>
+        <h2> {'textSize - '+ this.state.textSize} </h2>
         <button onClick={this.onListenClick}>Listen to mic</button>
         <Footer />
       </div>

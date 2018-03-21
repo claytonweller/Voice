@@ -5,20 +5,51 @@ const adjectiveListener = (string, keyWord) =>{
 	let adjectives = [];
 	switch (keyWord){
 		case 'background':
-			adjectives = colorArray;
+			adjectives = {
+				colors:colorArray,
+				sizes:[],
+			}
 			break;
 		case 'text':
-			adjectives = colorArray;
-			console.log(adjectives)
+			adjectives = {
+				colors:colorArray,
+				sizes:sizeArray,
+			}
 			break;
 		default:
-			adjectives = [];
+			adjectives = {
+				colors:[],
+				sizes:[],
+			};
 	};
 
-	let LowerString = string.toLowerCase();
- 	let result = adjectives.filter(adjective => LowerString.includes(adjective))
- 	if(result.length>0){
-	 	return result[0];
+	let lowerString = string.toLowerCase();
+ 	let colors = adjectives.colors;
+ 	let sizes = adjectives.sizes;
+ 	
+ 	const adjFilter = (arr)=>{
+ 		return arr.filter(adjective => lowerString.includes(adjective))
+ 	}
+
+ 	let objMaker = ()=>{
+ 		if(adjFilter(colors).length !== 0 ){
+ 			return {
+ 				adjective: adjFilter(colors)[0],
+ 				adjType:'color',
+ 			}
+ 		} else if (adjFilter(sizes).length !== 0 ){
+ 			return {
+ 				adjective: adjFilter(sizes)[0],
+ 				adjType:'size',
+ 			} 			
+ 		} 
+ 	}
+
+ 	let result = objMaker();
+
+ 	if(result !== undefined){
+	 	console.log(result)
+	 	return result;
 	} else{
 		return 'waiting';
 	}
