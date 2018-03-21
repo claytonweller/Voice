@@ -5,7 +5,6 @@ const actOnunderstanding = (keyWord, adjective, isComplex, modifyer) =>{
 	let action = {}
 
 	if(keyWord !== 'waiting' && adjective !== 'waiting'){
-
 		switch (keyWord){
 			case 'background':
 				if(isComplex){

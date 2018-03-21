@@ -5,14 +5,14 @@ import recognizeMicrophone from 'watson-speech/speech-to-text/recognize-micropho
 ///Elements built into the structure of the app.
 
 import './App.css';
-import Display from './Display'
+import Display from './Display/Display'
 import Nav from './Nav'
 import Footer from './Footer'
 
 ///Functions for understanding text. They look for Keywords, adjectives, and modifyers. Then they return states based upon those fidings
 
-import understand from './understand';
-import actOnUnderstanding from './actOnUnderstanding';
+import understand from './logic/understand';
+import actOnUnderstanding from './logic/actOnUnderstanding';
 
 //The App BEGINS!
 
@@ -28,6 +28,7 @@ class App extends Component {
         isComplex: false,
         BGColor:'',
         textColor:'white',
+        particleColor:'white',
         mode:'choose',
       }
     }
@@ -108,11 +109,13 @@ class App extends Component {
           adjective={this.state.adjective}
           modifyer={this.state.modifyer}
           BGColor={this.state.BGColor}
+          particleColor={this.state.particleColor}
           activate={this.activate}
           submitFieldChange={this.onSubmitFieldChange}
           submitClick={this.submitClick}
           voiceButtonClick={this.onVoiceButtonClick}
           textButtonClick={this.onTextButtonClick}
+
         />
         <h1> GET READY TO HAVE YOUR MIND BLOWN! </h1>
 
@@ -121,7 +124,8 @@ class App extends Component {
         <h2> {'adjective - '+ this.state.adjective} </h2>
         <h2> {'Complex? - '+ this.state.isComplex} </h2>
         <h2> {'BGColor - '+ this.state.BGColor} </h2>
-        <h2> {'TextColor - '+ this.state.textColor} </h2>
+        <h2> {'particleColor - '+ this.state.particleColor} </h2>
+        <h2> {'textColor - '+ this.state.textColor} </h2>
         <button onClick={this.onListenClick}>Listen to mic</button>
         <Footer />
       </div>

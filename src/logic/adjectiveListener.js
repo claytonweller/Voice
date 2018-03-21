@@ -1,14 +1,15 @@
 import colorArray from './colorArray';
+import sizeArray from './sizeArray';
 
 const adjectiveListener = (string, keyWord) =>{
 	let adjectives = [];
-
 	switch (keyWord){
 		case 'background':
 			adjectives = colorArray;
 			break;
 		case 'text':
 			adjectives = colorArray;
+			console.log(adjectives)
 			break;
 		default:
 			adjectives = [];

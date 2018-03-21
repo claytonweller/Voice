@@ -2,8 +2,10 @@ import React from 'react';
 import TextDisplay from './TextDisplay';
 import TextCapture from './TextCapture';
 import './Display.css'
+import ParticlesMine from './ParticlesMine';
 
-const Header = ({textButtonClick, voiceButtonClick, activate, submitClick, submitFieldChange, mode, BGColor, textColor, fieldString, keyWord, adjective, modifyer})=>{
+
+const Header = ({particleColor, textButtonClick, voiceButtonClick, activate, submitClick, submitFieldChange, mode, BGColor, textColor, fieldString, keyWord, adjective, modifyer})=>{
 
 
   const modeSelect= {
@@ -69,9 +71,13 @@ const Header = ({textButtonClick, voiceButtonClick, activate, submitClick, submi
 
   }
 
+
     return (
+
         <div className="page-header section-dark" style={{background:`${BGColor}`}}>
+        <ParticlesMine particleColor={particleColor}/>      
             <div className="filter"></div>
+            
             <div className="moving-clouds" style={{backgroundImage:`url(${'https://cdn.rawgit.com/creativetimofficial/paper-kit/bootstrap4-development/assets/img/clouds.png'})` }}>
             </div> 
             <div className="content-center">
