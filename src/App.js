@@ -60,7 +60,7 @@ class App extends Component {
   }
 
   onListenClick = () =>{
-  fetch('http://localhost:3005/api/speech-to-text/token')
+  fetch('https://murmuring-fjord-60883.herokuapp.com/api/speech-to-text/token')
     .then((response) => {
         return response.text();
     }).then( (token) => {
