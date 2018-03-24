@@ -1,0 +1,28 @@
+.helper {
+	box-shadow: 4px 4px 1px rgba(0,0,0,.3);
+	background-color:rgba(0,0,0,.4);
+	border-radius: 5px;
+	border: solid rgba(0,0,0,.2);
+	border-width: 3px;
+  max-width: 100%;
+  margin: 5px 0px;
+  padding: 20px 15px;
+  font-size: 14px;
+  text-transform: uppercase;
+  
+
+}
+
+.helper-box {
+  max-width: 500px;
+
+}
+
+.helper-text { 
+  font-weight: 600; 
+}
+
+.helper:hover{
+  cursor:pointer;
+}
+

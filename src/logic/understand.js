@@ -5,7 +5,7 @@ const understand = (string, word) =>{
     let keyWord = textListener.keyWord(string)
     let modifyer = textListener.modifyer(string, word)
     let adjObj = textListener.adjective(string, word)
-    let complexColor = modifyer+adjObj;
+    let complexColor = modifyer+adjObj.adjective;
 
     if(keyWord !== 'waiting' && adjObj.adjective !== 'waiting'){
       

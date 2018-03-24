@@ -3,7 +3,8 @@ import './particles.css';
 import Particles from 'react-particles-js';
 import colorNameToHex from './colorNameToHex'
 
-const ParticlesMine = ({particleColor})=>{
+const ParticlesMine = ()=>{
+  let particleColor = 'white'
   let colorHex = colorNameToHex (particleColor);
 
   let particleParams = {

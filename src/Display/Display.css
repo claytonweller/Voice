@@ -36,11 +36,21 @@ title-brand{
 button{
   font-size: 2em;
   font-weight: 700;
-  color: grey;
-  border-radius: 7px;
-  box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, .2);
+  color: white;
   margin: 10px;
-  opacity: .8
+  opacity: .8;
+
+  box-shadow: 4px 4px 1px rgba(0,0,0,.3);
+  background-color:rgba(0,0,0,.4);
+  border-radius: 5px;
+  border: solid rgba(0,0,0,.2);
+  border-width: 3px;
+  padding:10px;
+}
+
+button:hover{
+  cursor: pointer;
+  background-color:rgba(100,100,100,.5);
 }
 
 #submitField{

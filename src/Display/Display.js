@@ -5,7 +5,7 @@ import './Display.css'
 import ParticlesMine from './ParticlesMine';
 
 
-const Header = ({particleColor, textButtonClick, voiceButtonClick, activate, submitClick, submitFieldChange, mode, BGColor, textColor, textSize, fieldString, keyWord, adjective, modifyer})=>{
+const Header = ({ textButtonClick, voiceButtonClick, activate, submitClick, submitFieldChange, mode, BGColor, textColor, textSize, fieldString, keyWord, adjective, modifyer})=>{
 
 
   const modeSelect= {
@@ -76,7 +76,7 @@ const Header = ({particleColor, textButtonClick, voiceButtonClick, activate, sub
     return (
 
         <div className="page-header section-dark" style={{background:`${BGColor}`}}>
-        <ParticlesMine particleColor={particleColor}/>      
+        <ParticlesMine />      
             <div className="filter"></div>
             
             <div className="moving-clouds" style={{backgroundImage:`url(${'https://cdn.rawgit.com/creativetimofficial/paper-kit/bootstrap4-development/assets/img/clouds.png'})` }}>

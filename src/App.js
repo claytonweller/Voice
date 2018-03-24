@@ -1,24 +1,28 @@
 import React, { Component } from 'react';
-// import {Helmet} from 'react-helmet';
 import recognizeMicrophone from 'watson-speech/speech-to-text/recognize-microphone';
 
 ///Elements built into the structure of the app.
 
 import './App.css';
 import Display from './Display/Display'
-import Nav from './Nav'
-import Footer from './Footer'
+import Nav from './Nav/Nav'
+import Footer from './Footer';
 
 ///Functions for understanding text. They look for Keywords, adjectives, and modifyers. Then they return states based upon those fidings
 
 import understand from './logic/understand';
 import actOnUnderstanding from './logic/actOnUnderstanding';
 
+//The 'AI' Helper has some logic and some states
+
+import typewrite from './Nav/typewrite';
+import pause from './Nav/pause';
+
 //The App BEGINS!
 
 class App extends Component {
-    constructor (){
-      super();
+    constructor (props){
+      super(props);
       this.state ={
         fieldString:'',
         submittedString:'NOTHING',
@@ -32,8 +36,13 @@ class App extends Component {
         textSize:'normal',
         particleColor:'white',
         mode:'choose',
+        helperStatus: 'start',
+        helperText: 'Hello!',
+        helperInc: 0,
       }
     }
+
+
 
 
   activate=()=>{
@@ -46,10 +55,8 @@ class App extends Component {
     this.setState({ submittedString:value })
   }
 
-
   onSubmitFieldChange=(data)=>{
     let words = understand(this.state.fieldString, this.state.keyWord)
-
     this.setState(words)
     this.setState({fieldString:data.target.value})
     
@@ -84,13 +91,30 @@ class App extends Component {
     });
   }
 
+  helpCylce = async (mode) =>{
+    let i = 0;
+    while (i<5 ){
+      console.log(mode, this.state.helperStatus)
+      if (mode === this.state.helperStatus){
+
+        this.typer(mode, i);
+        await pause(7000)
+        this.incHelp();   
+      }
+      
+      i++; 
+    }
+  }
+
   onVoiceButtonClick = () =>{
-    this.setState({mode:'voice'});
+    this.helperStatusUpdate('voice');
     this.onListenClick();
+    this.helpCylce('voice');
   }
 
   onTextButtonClick = ()=>{
-    this.setState({mode:'text'})
+    this.helperStatusUpdate('text');
+    this.helpCylce('text');
   }
 
   submitClick = ()=>{
@@ -99,20 +123,55 @@ class App extends Component {
   }
 
 
+////// These functions update the 'AI' Helper window.
+
+  helperStatusUpdate = (mode)=>{
+    this.setState({mode:mode,helperStatus:mode,helperInc:0});
+  }
+
+  helperTextUpdate = (newString)=>{
+    this.setState({helperText:newString})
+  }
+
+  typer = (status, helperInc) =>{
+    typewrite(status, helperInc, this.helperTextUpdate);
+  }
+
+  incHelp = ()=>{
+    let inc = this.state.helperInc;
+    this.setState({helperInc:inc+1})
+    return inc+1;
+
+  }
+
+  onHelperClick = ()=>{
+    this.typer(this.state.helperStatus, this.incHelp())
+  }
+
+  componentDidMount(){
+    this.helpCylce('start')
+
+  }
+
+
   render() {
+    const { helperText, mode, textSize, textColor, fieldString, keyWord, adjective, adjType, modifyer, BGColor, isComplex } = this.state;
     return (
       <div className="App">
-        <Nav />
+        <Nav
+          textColor={textColor}
+          helperText={helperText}
+          onHelperClick={this.onHelperClick}
+        />
         <Display 
-          mode = {this.state.mode}
-          textSize = {this.state.textSize}
-          textColor={this.state.textColor}
-          fieldString={this.state.fieldString}
-          keyWord={this.state.keyWord}
-          adjective={this.state.adjective}
-          modifyer={this.state.modifyer}
-          BGColor={this.state.BGColor}
-          particleColor={this.state.particleColor}
+          mode = {mode}
+          textSize = {textSize}
+          textColor={textColor}
+          fieldString={fieldString}
+          keyWord={keyWord}
+          adjective={adjective}
+          modifyer={modifyer}
+          BGColor={BGColor}
           activate={this.activate}
           submitFieldChange={this.onSubmitFieldChange}
           submitClick={this.submitClick}
@@ -122,15 +181,14 @@ class App extends Component {
         />
         <h1> GET READY TO HAVE YOUR MIND BLOWN! </h1>
 
-        <h2> {'KeyWord - '+ this.state.keyWord} </h2>
-        <h2> {'Modifyer - '+ this.state.modifyer} </h2>
-        <h2> {'adjective - '+ this.state.adjective} </h2>
-        <h2> {'adjType - '+ this.state.adjType} </h2>        
-        <h2> {'Complex? - '+ this.state.isComplex} </h2>
-        <h2> {'BGColor - '+ this.state.BGColor} </h2>
-        <h2> {'particleColor - '+ this.state.particleColor} </h2>
-        <h2> {'textColor - '+ this.state.textColor} </h2>
-        <h2> {'textSize - '+ this.state.textSize} </h2>
+        <h2> {'KeyWord - '+ keyWord} </h2>
+        <h2> {'Modifyer - '+ modifyer} </h2>
+        <h2> {'adjective - '+ adjective} </h2>
+        <h2> {'adjType - '+ adjType} </h2>        
+        <h2> {'Complex? - '+ isComplex} </h2>
+        <h2> {'BGColor - '+ BGColor} </h2>
+        <h2> {'textColor - '+ textColor} </h2>
+        <h2> {'textSize - '+ textSize} </h2>
         <button onClick={this.onListenClick}>Listen to mic</button>
         <Footer />
       </div>
