@@ -36,7 +36,10 @@ const understand = (string, word) =>{
           modifyer:modifyer
         }
       } else {
-        return { adjective:adjObj.adjective }
+        return { 
+          adjType:adjObj.adjType,
+          adjective:adjObj.adjective 
+        }
       }
         
     };

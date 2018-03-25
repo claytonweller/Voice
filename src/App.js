@@ -78,8 +78,9 @@ class App extends Component {
           format: false // optional - performs basic formatting on the results such as capitals an periods
       });
       stream.on('data', (data) => {
-        this.activate();
         this.setState({fieldString:data.alternatives[0].transcript});
+        this.activate();
+        
         
       });
       stream.on('error', (err) => {

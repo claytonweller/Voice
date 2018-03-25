@@ -51,7 +51,7 @@ const adjectiveListener = (string, keyWord) =>{
 	 	console.log(result)
 	 	return result;
 	} else{
-		return 'waiting';
+		return {adjective:'waiting', adjType:'waiting'};
 	}
 }; 
 
