@@ -1,8 +1,16 @@
-
-
+import scrollDown from './scrollDown'
 
 const actOnunderstanding = (keyWord, adjective, adjType, isComplex, modifyer) =>{
 	let action = {}
+
+	let reset = ()=>{
+		action.keyWord = 'waiting';
+		action.adjective = 'waiting';
+		action.modifyer = 'waiting';
+		action.isComplex = false;
+		return action;
+
+	}
 
 	if(keyWord !== 'waiting' && adjective !== 'waiting'){
 		switch (keyWord){
@@ -13,6 +21,16 @@ const actOnunderstanding = (keyWord, adjective, adjType, isComplex, modifyer) =>
 					action = {BGColor:adjective};
 				}
 				break;
+
+			case 'buttons':
+			case 'button':
+				if(isComplex){
+					action = {buttonColor:modifyer+adjective};
+				} else {
+					action = {buttonColor:adjective};
+				}
+				break;
+			
 			case 'text':
 				if(adjType === 'color'){				
 					if(isComplex){
@@ -28,11 +46,21 @@ const actOnunderstanding = (keyWord, adjective, adjType, isComplex, modifyer) =>
 			default:
 				console.log('nothing going on')
 		};
-		action.keyWord = 'waiting';
-		action.adjective = 'waiting';
-		action.modifyer = 'waiting';
-		action.isComplex = false;
-		return action;
+	
+		return reset();
+	
+	} else if (keyWord !== 'waiting'){
+		switch (keyWord){
+			case 'down':
+			case 'help':
+				scrollDown();
+				return reset();
+
+			default:
+				console.log('nothing going on')
+
+		}
+
 	}
 };
 

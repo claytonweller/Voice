@@ -1,8 +1,7 @@
-import helperText from './helperText'
 import pause from './pause'
 
-const typewrite = async (helperStatus, helperInc, updater) =>{
-  let string = helperText(helperStatus, helperInc);
+const typewrite = async (string, updater) =>{
+  
   let i = 0;
   let newString = '';
   const typer = ()=>{

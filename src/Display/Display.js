@@ -5,7 +5,7 @@ import './Display.css'
 import ParticlesMine from './ParticlesMine';
 
 
-const Header = ({ textButtonClick, voiceButtonClick, activate, submitClick, submitFieldChange, mode, BGColor, textColor, textSize, fieldString, keyWord, adjective, modifyer})=>{
+const Header = ({ textButtonClick, voiceButtonClick, activate, submitClick, submitFieldChange, mode, BGColor, buttonColor, textColor, textSize, fieldString, keyWord, adjective, modifyer})=>{
 
 
   const modeSelect= {
@@ -40,23 +40,31 @@ const Header = ({ textButtonClick, voiceButtonClick, activate, submitClick, subm
     modeButtons : ()=>{
         if (mode==="choose"){
             return (
-              <div style={{zIndex:'10'}} className="mode-buttons">
+              <div style={{zIndex:'10' }} className="mode-buttons">
                 <button onClick={voiceButtonClick} style={{marginTop:'50px', zIndex:'400', marginRight:'10px'}}>Voice</button>
                 <button onClick={textButtonClick}> Text </button>                
               </div>
             )
         } else if (mode==="text"){
             return(
+              <div>
                 <TextCapture 
                   style={{ marginBottom:'50px', zIndex:'400'}}
                   submitClick={submitClick}
                   submitFieldChange={submitFieldChange} 
+                  buttonColor={buttonColor}
+                  textColor={textColor}
                 />
+                <button 
+                  onClick={voiceButtonClick} 
+                  style={{marginTop:'50px', zIndex:'400', marginRight:'10px', color:textColor, backgroundColor:buttonColor, opacity:'0.7'}}
+                >Voice</button>
+              </div>
             )
         } else if (mode==="voice"){
             return(
               <div style={{zIndex:'10'}} className="mode-buttons">
-                <button onClick={textButtonClick} style={{marginTop:'50px', zIndex:'400', marginRight:'10px'}}>Text</button>            
+                <button onClick={textButtonClick} style={{marginTop:'50px', zIndex:'400', marginRight:'10px', color:textColor, backgroundColor:buttonColor, opacity:'0.7'}}>Text</button>            
               </div>
             ) 
         }

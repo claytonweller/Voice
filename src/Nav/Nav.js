@@ -2,7 +2,7 @@ import React from 'react';
 import QuickLinks from './QuickLinks'
 import Helper from './Helper'
 
-const Nav = ({ textColor, helperText, onHelperClick })=>{
+const Nav = ({ buttonColor, textColor, helperText, onHelperClick })=>{
 
 	return (
 		<div>
@@ -10,6 +10,7 @@ const Nav = ({ textColor, helperText, onHelperClick })=>{
 			<nav className="navbar navbar-expand-md fixed-top navbar-transparent" color-on-scroll="500">
 		        <div className="container">
 		          	<Helper
+		          		buttonColor={buttonColor}
 		          		textColor ={textColor}
 		          		helperText = {helperText}
 		          		onHelperClick = {onHelperClick}

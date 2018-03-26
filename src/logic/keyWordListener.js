@@ -2,8 +2,10 @@ const keyWordListener = (string) =>{
 	let keyWords = [
 		'background',
 		'text',
+		'buttons',		
 		'button',
-
+		'help',
+		'down',
 	]
 	let lowerString = string.toLowerCase();
  	let result = keyWords.filter(kWord => lowerString.includes(kWord))

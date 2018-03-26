@@ -16,6 +16,13 @@ const adjectiveListener = (string, keyWord) =>{
 				sizes:sizeArray,
 			}
 			break;
+		case 'buttons':
+		case 'button':
+			adjectives = {
+				colors:colorArray,
+				sizes:[],
+			}
+			break;	
 		default:
 			adjectives = {
 				colors:[],
