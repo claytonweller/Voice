@@ -27,6 +27,7 @@ const Header = ({ textButtonClick, voiceButtonClick, activate, submitClick, subm
               <div>
                 <TextDisplay
                   textColor={textColor}
+                  textSize={textSize}
                   fieldString={fieldString}
                   keyWord={keyWord}
                   adjective={adjective}
@@ -83,7 +84,7 @@ const Header = ({ textButtonClick, voiceButtonClick, activate, submitClick, subm
 
     return (
 
-        <div className="page-header section-dark" style={{background:`${BGColor}`}}>
+        <div id="topmost" className="page-header section-dark" style={{background:`${BGColor}`}}>
         <ParticlesMine />      
             <div className="filter"></div>
             

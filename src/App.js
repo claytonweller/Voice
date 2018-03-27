@@ -21,7 +21,7 @@ import helperText from './Nav/helperText'
 
 //Full page verbs functions
 
-import scrollDown from './logic/scrollDown'
+import scroller from './logic/scroller'
 
 //The App BEGINS!
 
@@ -146,18 +146,18 @@ class App extends Component {
 
 
   onHelperClick = ()=>{
-    scrollDown();
+    scroller('down');
   }
 
   componentDidMount(){
-    this.helpCycle('start', 3)
+    this.helpCycle('start')
 
   }
 
 
 
   render() {
-    const { helperText, mode, textSize, textColor, buttonColor, fieldString, keyWord, adjective, adjType, modifyer, BGColor, isComplex } = this.state;
+    const { helperText, mode, textSize, textColor, buttonColor, fieldString, keyWord, adjective, modifyer, BGColor} = this.state;
     return (
       <div className="App">
         <Nav
@@ -165,6 +165,7 @@ class App extends Component {
           helperText={helperText}
           onHelperClick={this.onHelperClick}
           buttonColor={buttonColor}
+          textSize={textSize}
         />
         <Display 
           mode = {mode}
@@ -184,14 +185,6 @@ class App extends Component {
         />
         <h1 id="scroll-point"> GET READY TO HAVE YOUR MIND BLOWN! </h1>
 
-        <h2> {'KeyWord - '+ keyWord} </h2>
-        <h2> {'Modifyer - '+ modifyer} </h2>
-        <h2> {'adjective - '+ adjective} </h2>
-        <h2> {'adjType - '+ adjType} </h2>        
-        <h2> {'Complex? - '+ isComplex} </h2>
-        <h2> {'BGColor - '+ BGColor} </h2>
-        <h2> {'textColor - '+ textColor} </h2>
-        <h2> {'textSize - '+ textSize} </h2>
         <Footer />
       </div>
     );

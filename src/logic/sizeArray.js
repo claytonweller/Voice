@@ -1,13 +1,18 @@
 const sizeArray = [
-
-	'big',
-	'small',
-	'bigger',
-	'smaller',
 	'biggest',
 	'smallest',
+	'bigger',
+	'smaller',
 	'tiny',
 	'huge',
+	'normal',
+	'larger',
+	'large',
+	'big',
+	'small',
+	'gigantic',
+	'enourmous',
+	
 
 
 ];

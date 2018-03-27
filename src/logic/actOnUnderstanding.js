@@ -1,4 +1,4 @@
-import scrollDown from './scrollDown'
+import scroller from './scroller'
 
 const actOnunderstanding = (keyWord, adjective, adjType, isComplex, modifyer) =>{
 	let action = {}
@@ -53,9 +53,12 @@ const actOnunderstanding = (keyWord, adjective, adjType, isComplex, modifyer) =>
 		switch (keyWord){
 			case 'down':
 			case 'help':
-				scrollDown();
+				scroller('down');
 				return reset();
-
+			case 'up':
+			case 'top':
+				scroller('up');
+				return reset();
 			default:
 				console.log('nothing going on')
 
