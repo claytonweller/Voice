@@ -7,6 +7,7 @@ import './App.css';
 import Display from './Display/Display'
 import Nav from './Nav/Nav'
 import Footer from './Footer';
+import Instructions from './Instructions'
 
 ///Functions for understanding text. They look for Keywords, adjectives, and modifyers. Then they return states based upon those fidings
 
@@ -45,6 +46,7 @@ class App extends Component {
         modeSwitch:false,
         helperStatus: 'start',
         helperText: 'Hello!',
+        messageSent: false,
       }
     }
 
@@ -52,10 +54,10 @@ class App extends Component {
 
 
   activate=()=>{
-    const {keyWord, fieldString, adjective, adjType, isComplex, modifyer} = this.state
+    const {keyWord, fieldString, adjective, adjType, isComplex, modifyer, messageSent} = this.state
     let value = fieldString;
     let words = understand(fieldString, keyWord)
-    let action = actOnUnderstanding(keyWord, adjective, adjType, isComplex, modifyer);
+    let action = actOnUnderstanding(keyWord, adjective, adjType, isComplex, modifyer, messageSent);
     this.setState(words);
     this.setState(action);
     this.setState({ submittedString:value })
@@ -121,10 +123,6 @@ class App extends Component {
     let i = 0;
     let textArr = helperText(mode)
     while (i<textArr.length ){
-      if(this.state.modeSwitch){
-        this.setState({modeSwitch:false});
-        break;
-      }
 
       this.typer(textArr[i]);
       await pause(7000)
@@ -157,7 +155,7 @@ class App extends Component {
 
 
   render() {
-    const { helperText, mode, textSize, textColor, buttonColor, fieldString, keyWord, adjective, modifyer, BGColor} = this.state;
+    const { helperText, messageSent, mode, textSize, textColor, buttonColor, fieldString, keyWord, adjective, modifyer, BGColor} = this.state;
     return (
       <div className="App">
         <Nav
@@ -166,6 +164,7 @@ class App extends Component {
           onHelperClick={this.onHelperClick}
           buttonColor={buttonColor}
           textSize={textSize}
+          messageSent={messageSent}
         />
         <Display 
           mode = {mode}
@@ -183,7 +182,7 @@ class App extends Component {
           voiceButtonClick={this.onVoiceButtonClick}
           textButtonClick={this.onTextButtonClick}
         />
-        <h1 id="scroll-point"> GET READY TO HAVE YOUR MIND BLOWN! </h1>
+        <Instructions />
 
         <Footer />
       </div>

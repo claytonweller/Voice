@@ -4,9 +4,7 @@ const helperText = (helperStatus)=>{
 		
 		case 'start':
 			text = [
-				'Hello!',
-				'I\'m here to help you out.',
-				'You can control this page by voice or text. Click one of the options below.',
+				'Hello! --  I\'m here to help you out. --  You can control this page by voice or text. Click one of the options below.'
 			]
 
 			return text;
@@ -14,8 +12,8 @@ const helperText = (helperStatus)=>{
 		case 'voice':
 			text = [
 				'Great! Confirm that this page can use your microphone.',
-				'Text should appear below as you speak. If not, make sure your mic is on.',
-				'Say, "make the text green"',
+				'Text should appear below as you speak.      If not, make sure your mic is on.',
+				'Say, "make the text bigger"',
 				'Or maybe try, "I wish the background was dark red"',
 				'How about, "why aren\'t the buttons light blue already?!"',
 				'If all else fails just say, "Help!" (or click on me)',
@@ -27,8 +25,7 @@ const helperText = (helperStatus)=>{
 			text = [
 				'Cool! Type in the text box below.',
 				'Text should appear below as you type.',
-				'Say, "make the text green"',
-				'Type, "make the text green." Then click Submit',
+				'Type, "make the text bigger." Then click Submit',
 				'Or maybe try, "I wish the background was dark red"',
 				'How about, "why aren\'t the buttons light blue already?!"',
 				'If all else fails just sumbit, "Help!" (or click on me)',

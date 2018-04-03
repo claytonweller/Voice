@@ -24,5 +24,6 @@
 
 .helper:hover{
   cursor:pointer;
+  background-color: rgba(90,90,90,.4)
 }
 

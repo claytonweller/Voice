@@ -1,6 +1,6 @@
 const scroller=(direction)=>{
 	if (direction === 'down'){
-		document.getElementById('footer').scrollIntoView({behavior:'smooth'});
+		document.getElementById('help-me').scrollIntoView({behavior:'smooth'});
 	} else if (direction === 'up'){
 		window.scroll({
 			top:0,

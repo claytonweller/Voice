@@ -1,0 +1,12 @@
+.instructions{
+
+}
+
+.words{
+	display: grid;
+	grid-template-columns: 20% 30% 30% 20%; 
+}
+
+.keywords{
+	grid-column-start: 2;
+}
